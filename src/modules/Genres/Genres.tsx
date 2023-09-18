@@ -38,7 +38,9 @@ export default function Genres() {
       }
    }
    useEffect(() => {
-      document.title = `${categoriesGenres?.find((item) => item.id === type)?.name} - Page ${currentPage} | NetTruyen`
+      if (categoriesGenres) {
+         document.title = `${categoriesGenres.find((item) => item.id === type)?.name} - Page ${currentPage} | NetTruyen`
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [type, currentPage])
    return (

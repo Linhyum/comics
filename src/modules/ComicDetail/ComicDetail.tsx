@@ -61,7 +61,7 @@ export default function ComicDetail({ params }: { params: { title: string } }) {
          <div className='lg:grid grid-cols-12 gap-6 p-4 border-4 rounded-2xl border-primary '>
             {conmicDetail ? (
                <>
-                  <div className='relative mx-auto w-56 lg:w-[unset] lg:col-span-3 aspect-[2/3] overflow-hidden rounded-lg border-2 border-primary'>
+                  <div className='relative mx-auto w-56 lg:w-[unset] lg:mx-0 lg:col-span-3 aspect-[2/3] overflow-hidden rounded-lg border-2 border-primary'>
                      <Image
                         src={conmicDetail.thumbnail}
                         alt={conmicDetail.title}
@@ -214,8 +214,8 @@ export default function ComicDetail({ params }: { params: { title: string } }) {
                </>
             ) : (
                <>
-                  <div className='lg:col-span-3 w-56 lg:w-[unset] rounded-lg aspect-[2/3] bg-gray-400 animate-pulse' />
-                  <div className='lg:col-span-9 w-full mt-10 lg:mt-0 rounded-lg bg-gray-400 animate-pulse h-full' />
+                  <div className='lg:col-span-3 mx-auto w-56 lg:w-auto lg:mx-0 rounded-lg aspect-[2/3] bg-gray-400 animate-pulse' />
+                  <div className='lg:col-span-9 w-full mt-10 h-96 lg:h--auto lg:mt-0 rounded-lg bg-gray-400 animate-pulse' />
                </>
             )}
          </div>
