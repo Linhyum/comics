@@ -435,6 +435,7 @@ export default function Header() {
                   <form
                      onSubmit={(e) => {
                         e.preventDefault()
+                        setOpenMenuMobile(false)
                         router.push(`/search?q=${valueSearch}`)
                      }}
                      className='mt-10 flex items-center sm:hidden border border-gray-300 py-2 focus-within:border-primary rounded-full'
