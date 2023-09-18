@@ -2,11 +2,13 @@
 import ComicItem from '@/components/ComicItem/ComicItem'
 import LoadingComics from '@/components/Loading/LoadingComics'
 import { AppContext } from '@/context/app.context'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 export default function History() {
    const { history } = useContext(AppContext)
-   document.title = 'History | NetTruyen'
+   useEffect(() => {
+      document.title = 'History | NetTruyen'
+   }, [])
    return (
       <div className='mt-10'>
          {history.length > 0 ? (
