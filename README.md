@@ -11,4 +11,4 @@
 -  DarkMode
 -  Tìm kiếm comics
 
-## Công nghệ sử dụng: TypScript, NextJS App Router, TailwindCSS
+## Công nghệ sử dụng: TypeScript, NextJS App Router, TailwindCSS
