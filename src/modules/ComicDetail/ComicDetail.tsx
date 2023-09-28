@@ -62,12 +62,10 @@ export default function ComicDetail({ params }: { params: { title: string } }) {
             {conmicDetail ? (
                <>
                   <div className='relative mx-auto w-56 lg:w-[unset] lg:mx-0 lg:col-span-3 aspect-[2/3] overflow-hidden rounded-lg border-2 border-primary'>
-                     <Image
+                     {/* eslint-disable-next-line @next/next/no-img-element */}
+                     <img
                         src={conmicDetail.thumbnail}
                         alt={conmicDetail.title}
-                        fill
-                        priority
-                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                         className='w-full h-full object-cover'
                      />
                   </div>

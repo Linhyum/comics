@@ -1,7 +1,7 @@
 'use client'
 import useLocalStorage from '@/hooks/useLocalStorage'
 import { Comic } from '@/types/comics.type'
-import React, { createContext, useState } from 'react'
+import React, { createContext } from 'react'
 interface AppContextInterface {
    history: Comic[]
    setHistory: (value: Comic[] | ((val: Comic[]) => Comic[])) => void

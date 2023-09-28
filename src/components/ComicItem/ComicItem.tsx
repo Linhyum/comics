@@ -38,11 +38,10 @@ export default function ComicItem({ item, isDelete }: { item: Comic; isDelete?: 
                </svg>
             </button>
          )}
-         <Image
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img
             src={item.thumbnail}
             alt={item.title}
-            fill
-            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             className='w-full group-hover:scale-110 duration-500 transition-all h-full object-cover'
          />
          {item.is_trending && (

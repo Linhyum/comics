@@ -180,12 +180,12 @@ export default function Header() {
       >
          <div className='container h-full flex items-center justify-between lg:justify-normal bg-white dark:bg-slate-900'>
             <Link href={'/'}>
-               <Image
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img
                   src={'https://st.nettruyenus.com/data/logos/logo-nettruyen.png'}
                   alt='logo'
                   width={150}
                   height={30}
-                  priority
                   className='w-[150px] h-[30px] object-cover'
                />
             </Link>
@@ -270,7 +270,8 @@ export default function Header() {
                               href={`/comic/${item.id}`}
                               className='p-2 border-b dark:border-b-gray-600 border-b-gray-300 flex items-center gap-x-2 hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-10'
                            >
-                              <Image
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
                                  src={item.thumbnail}
                                  alt={item.title}
                                  width={64}
@@ -404,7 +405,8 @@ export default function Header() {
                                  href={`/comic/${item.id}`}
                                  className='p-2 border-b dark:border-b-gray-600 border-b-gray-300 flex items-center gap-x-2 hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-10'
                               >
-                                 <Image
+                                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                                 <img
                                     src={item.thumbnail}
                                     alt={item.title}
                                     width={64}
