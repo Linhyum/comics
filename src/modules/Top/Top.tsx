@@ -244,6 +244,7 @@ export default function Top() {
             ))}
          </nav>
          <ComicPaginate
+            setCurrentPage={setCurrentPage}
             comics={comics as Comic[]}
             currentPage={currentPage}
             handlePageClick={handlePageClick}

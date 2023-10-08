@@ -32,6 +32,7 @@ export default function Search() {
             Search result: <span className='text-primary'>{searchValue}</span>
          </h1>
          <ComicPaginate
+            setCurrentPage={setCurrentPage}
             comics={comics as Comic[]}
             currentPage={currentPage}
             handlePageClick={handlePageClick}

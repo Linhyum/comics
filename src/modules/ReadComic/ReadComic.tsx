@@ -11,7 +11,8 @@ import React, { useEffect, useState } from 'react'
 export default function ReadComic({ params }: { params: { id: number } }) {
    const [showToolbar, setShowToolbar] = useState<boolean>(true)
    const [currentPage, setCurrentPage] = useState<number>(1)
-   const [inputRangeVal, setInputRangeVal] = useState<number>(1)
+   const [isFullScreen, setIsFullScreen] = useState<boolean>(false)
+
    const [openAllChapters, setOpenAllChapters] = useState<boolean>(false)
    const pathname = usePathname()
    const router = useRouter()
@@ -30,11 +31,9 @@ export default function ReadComic({ params }: { params: { id: number } }) {
       })
       if (foundEle) {
          setCurrentPage(Number(foundEle.getAttribute('id')) - 1)
-         setInputRangeVal(Number(foundEle.getAttribute('id')) - 1)
          return
       }
       setCurrentPage(elements.length)
-      setInputRangeVal(elements.length)
    }
 
    useEffect(() => {
@@ -52,6 +51,17 @@ export default function ReadComic({ params }: { params: { id: number } }) {
          const chapterIdx = chapters.findIndex((chapter: any) => chapter.id === Number(params.id))
          const nextChapterIdx = chapterIdx + (type === 'next' ? 1 : -1)
          router.push(`/comic/${title}/${chapters[nextChapterIdx].id}`)
+      }
+   }
+
+   // Toggle full screen
+   const toggleShowScreen = () => {
+      if (!document.fullscreenElement) {
+         document.documentElement.requestFullscreen()
+         setIsFullScreen(true)
+      } else if (document.exitFullscreen) {
+         document.exitFullscreen()
+         setIsFullScreen(false)
       }
    }
 
@@ -77,7 +87,7 @@ export default function ReadComic({ params }: { params: { id: number } }) {
             <>
                <header
                   onClick={(e) => e.stopPropagation()}
-                  className={`select-none fixed z-[70] top-0 inset-x-0 flex sm:block items-center justify-between bg-[rgba(0,0,0,0.9)] py-3 px-2 text-gray-300 font-semibold transition-all duration-300 ${
+                  className={`select-none fixed z-[70] top-0 inset-x-0 flex items-center justify-between sm:justify-center gap-x-5 bg-[rgba(0,0,0,0.9)] py-3 px-2 text-gray-300 font-semibold transition-all duration-300 ${
                      showToolbar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
                   }`}
                >
@@ -96,6 +106,39 @@ export default function ReadComic({ params }: { params: { id: number } }) {
                      </svg>
                      <span>{comicChapter.chapter_name}</span>
                   </div>
+                  <button className='hidden sm:block' onClick={toggleShowScreen}>
+                     {isFullScreen ? (
+                        <svg
+                           xmlns='http://www.w3.org/2000/svg'
+                           fill='none'
+                           viewBox='0 0 24 24'
+                           strokeWidth={1.5}
+                           stroke='currentColor'
+                           className='w-6 h-6'
+                        >
+                           <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              d='M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25'
+                           />
+                        </svg>
+                     ) : (
+                        <svg
+                           xmlns='http://www.w3.org/2000/svg'
+                           fill='none'
+                           viewBox='0 0 24 24'
+                           strokeWidth={1.5}
+                           stroke='currentColor'
+                           className='w-6 h-6'
+                        >
+                           <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              d='M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15'
+                           />
+                        </svg>
+                     )}
+                  </button>
                </header>
                <ul className='flex flex-col max-w-2xl mx-auto select-none'>
                   {comicChapter.images.map((item) => (

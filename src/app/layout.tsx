@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { ReactQueryProvider } from './ReactQueryProvider'
 import { AppProvider } from '@/context/app.context'
 import Header from '@/components/Header/Header'
+import Footer from '@/components/Footer/Footer'
 
 export const metadata: Metadata = {
    title: 'Đọc Truyện Tranh Online - Website chính thức - NetTruyen.COM',
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                <body className='dark:bg-slate-900 dark:text-white'>
                   <Header />
                   <main className='container pt-14 pb-10'>{children}</main>
+                  <Footer />
                </body>
             </html>
          </AppProvider>

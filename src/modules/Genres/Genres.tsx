@@ -110,6 +110,7 @@ export default function Genres() {
             {categoriesGenres?.find((item) => item.id === type)?.description}
          </div>
          <ComicPaginate
+            setCurrentPage={setCurrentPage}
             comics={comics as Comic[]}
             currentPage={currentPage}
             handlePageClick={handlePageClick}

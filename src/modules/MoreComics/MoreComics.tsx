@@ -43,6 +43,7 @@ export default function MoreComics({ key, getApi, title, icon }: Props) {
             </span>
          </h2>
          <ComicPaginate
+            setCurrentPage={setCurrentPage}
             comics={comics as Comic[]}
             currentPage={currentPage}
             handlePageClick={handlePageClick}
