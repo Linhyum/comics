@@ -82,6 +82,7 @@ export default function ComicPaginate({ comics, handlePageClick, totalPages, cur
                      onSubmit={(e) => {
                         e.preventDefault()
                         setCurrentPage(value)
+                        handlePageClick({ selected: value - 1 })
                         setOpenPaginate(false)
                      }}
                      className='bg-blue-500 text-white shadow rounded p-2 flex items-center gap-x-2'
