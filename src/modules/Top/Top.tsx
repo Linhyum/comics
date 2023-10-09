@@ -4,7 +4,7 @@ import ComicPaginate from '@/components/ComicPaginate/ComicPaginate'
 import { Comic } from '@/types/comics.type'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 const nav1: {
    title: string
    icon: React.JSX.Element
@@ -205,6 +205,22 @@ export default function Top() {
          router.push(`/top?tab=${tab}&filter=${status}&page=${e.selected + 1}`)
       }
    }
+
+   useEffect(() => {
+      if (currentPage === 1) {
+         // Lần đầu truy cập, redirect về trang 1
+         router.push(`/top?tab=${tab}&filter=${status}&page=1`)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [currentPage])
+
+   useEffect(() => {
+      nav1.forEach((nav) => {
+         if (nav.tab === tab) {
+            document.title = `${nav.title} - Page ${currentPage} | NetTruyen`
+         }
+      })
+   }, [tab, currentPage])
 
    return (
       <>

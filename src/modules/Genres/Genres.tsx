@@ -38,6 +38,14 @@ export default function Genres() {
       }
    }
    useEffect(() => {
+      if (currentPage === 1) {
+         // Lần đầu truy cập, redirect về trang 1
+         router.push(`/genres?type=${type}&page=1`)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [currentPage])
+
+   useEffect(() => {
       if (categoriesGenres) {
          document.title = `${categoriesGenres.find((item) => item.id === type)?.name} - Page ${currentPage} | NetTruyen`
       }

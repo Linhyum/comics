@@ -5,14 +5,13 @@ import { Chapter } from '@/types/comicDetail.type'
 import { Comic } from '@/types/comics.type'
 import { formatNumberWithDot } from '@/utils/utils'
 import { useQuery } from '@tanstack/react-query'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect, useContext } from 'react'
 const CHAPTER_PER_PAGE = 50
 export default function ComicDetail({ params }: { params: { title: string } }) {
    const [showMore, setShowMore] = useState<boolean>(false)
-   const { setHistory } = useContext(AppContext)
+   const { setHistory, history } = useContext(AppContext)
    const router = useRouter()
    const { data } = useQuery({
       queryKey: ['comicDetail', params.title],
@@ -50,6 +49,23 @@ export default function ComicDetail({ params }: { params: { title: string } }) {
       setChaptersSection(
          getChapter(idx === 0 ? 0 : idx * CHAPTER_PER_PAGE + 1, (idx + 1) * CHAPTER_PER_PAGE) as Chapter[]
       )
+   }
+
+   //history
+   const handleHistory = (data: Comic) => {
+      // Nếu button đã tồn tại trong history thì xóa đi
+      const newHistory = history.filter((item) => item.id !== data.id)
+
+      // Thêm button vừa click vào đầu mảng history
+      newHistory.unshift(data)
+
+      // Giới hạn history tối đa 10 phần tử
+      if (newHistory.length > 10) {
+         newHistory.pop()
+      }
+
+      // Cập nhật lại history
+      setHistory(newHistory)
    }
 
    useEffect(() => {
@@ -161,26 +177,7 @@ export default function ComicDetail({ params }: { params: { title: string } }) {
                                     conmicDetail.chapters[conmicDetail.chapters.length - 1].id
                                  }`
                               )
-                              setHistory((prev: any) => {
-                                 if (prev.length >= 20) {
-                                    return prev.includes(conmicDetail as unknown as Comic)
-                                       ? [
-                                            conmicDetail,
-                                            ...prev.filter((i: Comic) => i !== (conmicDetail as unknown as Comic))
-                                         ]
-                                       : [
-                                            conmicDetail,
-                                            ...prev.filter((_: any, index: number) => index !== prev.length - 1)
-                                         ]
-                                 } else {
-                                    return prev.includes(conmicDetail as unknown as Comic)
-                                       ? [
-                                            conmicDetail,
-                                            ...prev.filter((i: Comic) => i !== (conmicDetail as unknown as Comic))
-                                         ]
-                                       : [conmicDetail, ...prev]
-                                 }
-                              })
+                              handleHistory(conmicDetail as unknown as Comic)
                            }}
                            className='py-2 text-lg font-bold px-6 rounded flex items-center gap-x-1 bg-primary border-2 hover:bg-opacity-90 border-primary'
                         >

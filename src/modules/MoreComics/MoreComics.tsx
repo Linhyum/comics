@@ -16,6 +16,7 @@ export default function MoreComics({ key, getApi, title, icon }: Props) {
    const router = useRouter()
    const pathname = usePathname()
    const [currentPage, setCurrentPage] = useState<number>(1)
+
    const { data } = useQuery({
       queryKey: [key, currentPage],
       queryFn: () => getApi({ page: currentPage })
@@ -31,6 +32,13 @@ export default function MoreComics({ key, getApi, title, icon }: Props) {
          router.push(`${pathname}?page=${e.selected + 1}`)
       }
    }
+   useEffect(() => {
+      if (currentPage === 1) {
+         // Lần đầu truy cập, redirect về trang 1
+         router.push(`${pathname}?page=1`)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [currentPage])
    useEffect(() => {
       document.title = `${title} - Page ${currentPage} | NetTruyen`
    }, [currentPage, title])

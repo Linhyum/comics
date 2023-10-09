@@ -2,7 +2,6 @@
 import { AppContext } from '@/context/app.context'
 import { Comic } from '@/types/comics.type'
 import { formatNumber } from '@/utils/utils'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { Fragment, useContext } from 'react'
 
