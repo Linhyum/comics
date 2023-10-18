@@ -307,7 +307,11 @@ export default function Header() {
                   <input
                      onFocus={() => setOpenSearchSuggest(true)}
                      onBlur={() => setOpenSearchSuggest(false)}
-                     onChange={(e) => setValueSearch(e.target.value)}
+                     onChange={(e) =>
+                        setTimeout(() => {
+                           setValueSearch(e.target.value)
+                        }, 1000)
+                     }
                      type='text'
                      className='outline-none border-none pl-3 bg-transparent w-full'
                      placeholder='Search comics/authors'
