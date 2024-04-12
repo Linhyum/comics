@@ -9,8 +9,8 @@ export default function Footer() {
                <Link href={'/'}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                     src={'https://st.nettruyenus.com/data/logos/logo-nettruyen.png'}
-                     alt='logo'
+                     src={'/logo.png'}
+                     alt='nettruyen'
                      width={150}
                      height={30}
                      className='w-[150px] h-[30px] object-cover'

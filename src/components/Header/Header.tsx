@@ -176,14 +176,14 @@ export default function Header() {
             position: scrollingUp ? 'fixed' : 'absolute',
             top: scrollingUp ? '0' : 'auto'
          }}
-         className='h-14 shadow-lg z-50 w-full transition-all duration-500'
+         className='h-14 shadow-lg z-50 w-full transition-all duration-500 bg-white dark:bg-slate-900'
       >
-         <div className='container h-full flex items-center justify-between lg:justify-normal bg-white dark:bg-slate-900'>
+         <div className='container h-full flex items-center justify-between lg:justify-normal'>
             <Link href={'/'}>
                {/* eslint-disable-next-line @next/next/no-img-element */}
                <img
-                  src={'https://st.nettruyenus.com/data/logos/logo-nettruyen.png'}
-                  alt='logo'
+                  src={'/logo.png'}
+                  alt='nettruyen'
                   width={150}
                   height={30}
                   className='w-[150px] h-[30px] object-cover'

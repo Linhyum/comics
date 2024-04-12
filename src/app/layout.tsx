@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <ReactQueryProvider>
          <AppProvider>
             <html lang='en'>
-               <body className='dark:bg-slate-900 dark:text-white'>
+               <body className='dark:bg-slate-800 dark:text-white'>
                   <Header />
                   <main className='container pt-14 pb-10'>{children}</main>
                   <Footer />
