@@ -47,7 +47,7 @@ export default function Home() {
    useEffect(() => {
       document.title = 'Đọc Truyện Tranh Online - Website chính thức - NetTruyen.COM'
    }, [])
-   if (!trendingComics || !completedComics || !recentUpdateComics || !boyComics || !girlComics)
+   if (!trendingComics || !completedComics || !recentUpdateComics)
       return (
          <>
             <div className='flex items-center justify-between mt-10 mb-5'>
@@ -174,7 +174,7 @@ export default function Home() {
                   />
                </svg>
             }
-            comics={boyComics}
+            comics={boyComics!}
          />
 
          {/* Girl Comics */}
@@ -203,7 +203,7 @@ export default function Home() {
                   />
                </svg>
             }
-            comics={girlComics}
+            comics={girlComics!}
          />
       </>
    )

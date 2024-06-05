@@ -59,7 +59,7 @@ export default function ComicsList({ comics, title, linkMore, icon }: Props) {
                }
             }}
          >
-            {comics.map((item) => (
+            {comics?.map((item) => (
                <SwiperSlide key={item.id}>
                   <ComicItem item={item} />
                </SwiperSlide>

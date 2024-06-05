@@ -190,7 +190,7 @@ export default function Header() {
                />
             </Link>
             <nav className='items-center gap-x-3 ml-6 hidden lg:flex'>
-               {links.map((item) => (
+               {links?.map((item) => (
                   <Link
                      className={`text-lg py-2 px-4 rounded-full font-bold ${
                         pathname === item.active ? 'bg-primary text-white' : 'hover:text-primary'
@@ -284,7 +284,7 @@ export default function Header() {
                                  </h3>
                                  <span className='text-primary font-bold'>{item.authors}</span>
                                  <span className='leading-tight'>
-                                    {item.genres.map((i, index) => i + (index === item.genres.length - 1 ? '' : ', '))}
+                                    {item.genres?.map((i, index) => i + (index === item.genres.length - 1 ? '' : ', '))}
                                  </span>
                               </div>
                            </Link>
@@ -423,7 +423,7 @@ export default function Header() {
                                     </h3>
                                     <span className='text-primary font-bold'>{item.authors}</span>
                                     <span className='leading-tight'>
-                                       {item.genres.map(
+                                       {item.genres?.map(
                                           (i, index) => i + (index === item.genres.length - 1 ? '' : ', ')
                                        )}
                                     </span>
@@ -473,7 +473,7 @@ export default function Header() {
                   </form>
                </Tippy>
                <ul className='mt-5 sm:mt-10 text-lg flex flex-col gap-y-2 font-medium'>
-                  {links.map((item) => (
+                  {links?.map((item) => (
                      <li key={item.title}>
                         <Link
                            onClick={() => setOpenMenuMobile(false)}

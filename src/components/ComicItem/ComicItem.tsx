@@ -55,7 +55,7 @@ export default function ComicItem({ item, isDelete }: { item: Comic; isDelete?: 
             </h3>
             <div className='border-b border-b-gray-500 w-full' />
             <div className='text-gray-300 w-full truncate font-medium'>
-               {item.genres.map((genre, index) => (
+               {item.genres?.map((genre, index) => (
                   <Fragment key={genre.id}>
                      {genre.name} {index === item.genres.length - 1 ? '' : '|'}{' '}
                   </Fragment>
